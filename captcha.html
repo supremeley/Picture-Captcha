@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="warp">
+        <canvas id="captcha" width="400" height="80"></canvas>
+        <p>看不清？点击更换</p>
+    </div>  
+</body>
+<style>
+
+    body{
+        margin: 0;
+    }
+
+    #warp {
+        text-align: center;
+        width: 400px;
+        height: 101px; 
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    p {
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+
+</style>
+<script>
+
+    var captcha = document.getElementById("captcha");
+
+    function createdNum(a,b){
+        return Math.floor(Math.random()*(a-b)+b);
+    }
+
+    function createdColo(a,b){
+        var r = createdNum(a,b);
+        var g = createdNum(a,b);
+        var b = createdNum(a,b);
+        return "rgb("+r+","+g+","+b+")";
+    }
+
+</script>
+</html>
