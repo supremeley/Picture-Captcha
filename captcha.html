@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body oncontextmenu="return false">
     <div id="warp">
         <canvas id="captcha" width="400" height="80"></canvas>
-        <p>看不清？点击更换</p>
+        <p id="btn">看不清？点击更换</p>
     </div>  
 </body>
 <style>
@@ -39,17 +39,33 @@
 </style>
 <script>
 
-    var captcha = document.getElementById("captcha");
+    var captcha = document.getElementById("captcha").getContext("2d");
+    var btn = document.getElementById("btn");
 
-    function createdNum(a,b){
+    createdCaptcha();
+
+    btn.onclick = function(ev){
+        // ev.preventDefault();
+        createdCaptcha();
+    };
+    
+    // captcha.lineWidth = 20;
+    // captcha.strokeRect(100,100,150,150)
+
+    function createdNum(a,b){//生成随机数字
         return Math.floor(Math.random()*(a-b)+b);
     }
 
-    function createdColo(a,b){
+    function createdColor(a,b){//生成随机颜色
         var r = createdNum(a,b);
         var g = createdNum(a,b);
         var b = createdNum(a,b);
         return "rgb("+r+","+g+","+b+")";
+    }
+
+    function createdCaptcha(){//生成验证码
+        captcha.fillStyle = createdColor(0,255);
+        captcha.fillRect(0,0,600,80);
     }
 
 </script>
