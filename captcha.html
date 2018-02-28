@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body oncontextmenu="return false">
+<body onselectstart="return false">
     <div id="warp">
         <canvas id="captcha" width="400" height="80"></canvas>
         <p id="btn">看不清？点击更换</p>
@@ -66,6 +66,16 @@
     function createdCaptcha(){//生成验证码
         captcha.fillStyle = createdColor(0,255);
         captcha.fillRect(0,0,600,80);
+        captcha.beginPath();
+        
+        captcha.moveTo(50,50);
+        captcha.lineTo(100,100);
+        captcha.stroke()
+        
+
+        captcha.beginPath();
+        captcha.arc(30,30,30,0,6);
+        captcha.stroke()
     }
 
 </script>
