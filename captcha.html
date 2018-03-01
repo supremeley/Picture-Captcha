@@ -66,20 +66,28 @@
     function createdCaptcha(){//生成验证码
         captcha.fillStyle = createdColor(0,255);
         captcha.fillRect(0,0,600,80);
-        captcha.beginPath();
-        
-        captcha.moveTo(50,50);
-        captcha.lineTo(100,100);
-        captcha.stroke()
-        
 
-        captcha.beginPath();
-        captcha.arc(30,30,30,0,6);
-        captcha.stroke()
-        
-        captcha.fillStyle = createdColor(50,160);
-        captcha.font="30px Arial";   
-        captcha.fillText("aaaa",20,50);
+        let str = "ABCEFGHJKLMNPQRSTWXYabcdefghijklmnopqrstuvwxyz123456789";
+        for(let i = 0 ; i<6 ;i++){
+            var captchaText = str[createdNum(0,str.length)];
+            
+            var x = i * 50 + 40;
+            var y = createdNum(0,20);
+            var deg= createdNum(-10,10);
+
+            captcha.fillStyle = createdColor(0,255);
+            captcha.font = createdNum(25,50)+"px Arial";
+
+            captcha.translate(x,y);
+            captcha.rotate(deg*Math.PI/180);
+            captcha.fillText(captchaText,20,50);
+            
+            captcha.rotate(-deg*Math.PI/180);
+            captcha.translate(-x,-y);
+
+        }
+
+        // console.log(captchaText)
         
     }
 
